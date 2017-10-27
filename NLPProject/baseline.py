@@ -8,6 +8,7 @@ class Baseline:
 	def __init__(self, test_filepath):
 		#self.processFiles(test_filepath)
 		self.loadTestingData("testing.json")
+		self.predictAnswer()
 
 	"""
 	Loads paragraphs and questions
@@ -50,6 +51,19 @@ class Baseline:
 		self.paragraphs = paragraphs_list
 		self.questions = questions_list
 		self.ids = question_id_list
+
+
+
+	def predictAnswer(self):
+		predictions = {}
+		for outerInd in range(len(self.questions)):
+			for innerInd in range(len(self.questions[outerInd])):
+				randomAnswer = self.randAnswer(innerInd, outerInd)
+				predictions[self.ids[outerInd][innerInd]] = randomAnswer
+
+		f = open('predictions.json', 'w')
+		f.write(json.dumps(predictions))
+		f.close()
 
 
 baseline = Baseline("training.json")
