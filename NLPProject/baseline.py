@@ -29,6 +29,7 @@ class Baseline:
 
 		paragraphs_list = []
 		questions_list = []
+		question_id_list = []
 
 		for section in testing_data:
 			title = section["title"]
@@ -36,17 +37,19 @@ class Baseline:
 
 			for paragraph in paragraphs:
 				questions_in_paragraph = []
-				paragraphs_list.append(paragraph["context"])
+				ids_in_paragraph = []
+				sentences = paragraph["context"].split(".")
+				paragraphs_list.append(sentences)
 
 				qas = paragraph["qas"]
 				for question in qas:
 					questions_in_paragraph.append(question["question"])
+					ids_in_paragraph.append(question["id"])
 				questions_list.append(questions_in_paragraph)
-
+				question_id_list.append(ids_in_paragraph)
 		self.paragraphs = paragraphs_list
 		self.questions = questions_list
-
-		# print(self.questions[0])
+		self.ids = question_id_list
 
 
 baseline = Baseline("training.json")
