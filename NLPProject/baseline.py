@@ -48,20 +48,5 @@ class Baseline:
 
 		# print(self.questions[0])
 
-		"""
-			for each question:
-				max = 0
-				currsent = ""
-				for each word in question:
-					for each sentence in paragraph:
-						if word is in sentence
-							find number of other words the sentence has in common with the question
-							if that number is greater than max, set max to that, set currsent to sentence
-					in currsent, remove words that are in the question and split the rest of the sentence into contiguous groups
-					return random group as the answer
-
-					do formatting
-		"""
-
 
 baseline = Baseline("training.json")
