@@ -52,6 +52,7 @@ class Baseline:
 		self.questions = questions_list
 		self.ids = question_id_list
 
+	def randAnswer(self, questionIndex, paragraphIndex):
 
 
 	def predictAnswer(self):
